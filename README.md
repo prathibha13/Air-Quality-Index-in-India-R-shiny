@@ -6,6 +6,7 @@ A word that means your surroundings. we wanted people to be aware of their surro
 The basic idea of the project was to analyze the pollution data State wise over the years and then try to understand and help other understand what is the distribution of the pollutants and what pollutant is most affecting a particular state at a particular time.
 
 <h3><b>Work flow :</b></h3>
+
 - We decide to used R shiny to develop a dashboard to explain our findings and insights. the first tab was dedicated to the news and current affairs related to pollution and about the dashboard.
 
 - The second tab was dedicated to show the map with the states we are analyzing and the AQI for that state, the distribution of various pollutants were also presented in the same page.
