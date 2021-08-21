@@ -11,6 +11,10 @@ period of 2017-2019. The project analyses the same data in multiple ways using d
 statistical tools and visualization tools to derive insights from the changing trends over
 years
 
+<h3><b>Dataset :</b></h3>
+- finalDS.csv is the dataset we have used in the project. It is a pre-processed dataset of a dataset taken from Kaggle.
+- pollutants table.csv is a dataset we have created that is used in the pollutant trends tab
+
 <h3><b>Work flow :</b></h3>
 
 - We have used R shiny to develop a dashboard to explain our findings and insights. T
