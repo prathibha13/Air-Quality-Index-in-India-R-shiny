@@ -13,7 +13,7 @@ library(shinythemes)
 #                                              READING THE FILES
 #  --------------------------------------------------------------------------------------------------------
 title <- tags$img(src='logo.png',height='50', width='46'," E N V I R O N S")
-Datafinal= read.csv("C:/Users/prathibha k s/OneDrive/Desktop/R shiny/finalDS.csv")
+Datafinal= read.csv("https://raw.githubusercontent.com/prathibha13/R-shiny-project-AQI/main/finalDS.csv")
 Datafinal$Date = as.Date(Datafinal$Date,"%d-%m-%Y")
 Datafinal <- mutate(Datafinal, Year = format(Date,"%Y"))
 Year<-unique(Datafinal$Year)
@@ -98,32 +98,42 @@ tabItem(tabName = "table",
                             h3,h2{
                               font-weight:bold;
                             }
+                            
+                            #imagesize  
+                            {  
+                            width:135px;  
+                            height:127px;  
+                            } 
                             </style>
                             </head>
                             <body>
-                            
-                            <table style="width:100%; border:0px;">
-                              <tr>
-                                <td width="40%"><img src="news_1.png" height ="27%"></td>
-                                  <td>Crop residue burning is one part of the problem. A seasonal source of particulate matter pollution, 
+                                <table border="0" width="100%">
+                                    <col style="width:30%">
+	                                  <col style="width:70%">
+	                                  
+	                                  <tr>
+	                                      <td><img src="news_1.png" id="imagesize"></td>
+	                                      <td>Crop residue burning is one part of the problem. A seasonal source of particulate matter pollution, 
                                   crop residue burning is a demonstration of why environmental concerns such as air quality cannot be addressed 
                                   in isolation and there are no easy or quick solutions. 
                                   <a href="https://economictimes.indiatimes.com/news/politics-and-nation/more-to-delhis-pollution-than-crop-burning/printarticle/78891537.cms">Read More</a></td>
-                              </tr>
-                              <tr>
-                                <td><img src="news_2.png" height ="47%""></td>
-                                <td>The air quality dipped to "severe" at several places across the national 
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><img src="news_2.png" id="imagesize"></td>
+                                        <td>The air quality dipped to "severe" at several places across the national 
                                 capital on Saturday night itself owing to a combination of stubble burning and firecrackers burst during the Diwali 
                                 celebrations in violation of a ban on the same. 
                                 <a href="https://economictimes.indiatimes.com/news/politics-and-nation/air-quality-worsens-in-the-national-capital-post-diwali/articleshow/79228838.cms?utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst">Read more<a/></td>
-                              </tr>
-                              <tr>
-                                <td><img src="news_3.png" height ="57%"></td>
-                                <td>The city air quality index was 374 at 9 am on Thursday. The 24-hour average AQI was 413 on Wednesday, 379 on 
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><img src="news_3.png" id="imagesize"></td>
+                                        <td>The city air quality index was 374 at 9 am on Thursday. The 24-hour average AQI was 413 on Wednesday, 379 on 
                                 Tuesday and 295 on Monday, according to the Central Pollution Control Board data.
                                 <a href="https://economictimes.indiatimes.com/news/politics-and-nation/delhis-air-quality-very-poor-improvement-predicted/articleshow/79422430.cms?utm_source=contentofinterest&utm_medium=text&utm_campaign=cppst">Read more</a></td>
-                              </tr>
-                              </table>
+                                    </tr>
+                                </table>
                             </body>
                             </html>'))),
         fluidRow(
@@ -237,7 +247,7 @@ tabItem(tabName = "table",
                      
               ),
               column(6,
-                     box(title = "Precautions table", solidHeader = TRUE, status = "primary", width = 12,
+                     box(title = "Precautions table", solidHeader = TRUE, status = "primary", width = 15,
                     tabsetPanel(
                     tabPanel("PM2.5", withSpinner(dataTableOutput("pm2_5",height = 475))),
                     tabPanel("PM10", withSpinner(dataTableOutput("pm10",height = 475))),
@@ -299,7 +309,7 @@ output$heatmap <- renderPlot({
 # ----------------------------------------------------TABLES FOR POLLUTANT PRECAUTIONS-------------------------------------------------- 
 
 # reading csv file containing precautions from pollutants
-Poltab= read.csv("C:/Users/prathibha k s/OneDrive/Desktop/R shiny/pollutants table.csv")
+Poltab= read.csv("https://raw.githubusercontent.com/prathibha13/R-shiny-project-AQI/main/pollutants%20table.csv")
 
 # Table showing PM2.5 cautions
 pm2_5data<-Poltab[,c(1:3)]
