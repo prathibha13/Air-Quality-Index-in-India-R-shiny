@@ -1,5 +1,5 @@
 # Air Quality Index in India - R shiny dashboard
-<h3><b>Title description :</b></h3>
+<h3><b>Project description :</b></h3>
 Clean air is the basic amenity when it comes to healthy living for mankind. Today, inadequate air
 quality is one of the key causes for a variety of acute health problems. To determine its effect on
 our health, it is important to know the air quality of our locality, region, and country.
