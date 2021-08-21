@@ -57,10 +57,9 @@ tabItem(tabName = "table",
         downloadButton("downloadData"),
         br(),
         br(),
-   # box(title = "Dataset",solidHeader = TRUE,status = "primary",height="100%", width =12,
         tableOutput("tableData")),
-# ---------------------------------------------HOME TAB-------------------------------------------------------------
 
+# ---------------------------------------------HOME TAB-------------------------------------------------------------
 
   tabItem(tabName = "home",
         tags$img(src="environs.png", height=300, width='100%'),
@@ -273,133 +272,10 @@ tabItem(tabName = "table",
 
 server <- function(input, output) {
 
-# ----------------------------------------------------------TAB4-----------------------------------------------------------------------  
+
+# ------------------------------------------------------TAB2------------------------------------------------------------ 
+# ---------------------------------------------- MAP AND BAR CHARTS --------------------------------------------------
   
-# --------------------------------------------------------CORRELATION MATRIX ----------------------------------------------------------    
- 
-output$corrcoeff <- renderPlot({
-  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
-  mydata<-mydata2[,c(3:11)]
-  mydata.rcorr = rcorr(as.matrix(mydata))
-  mydata.coeff = mydata.rcorr$r
-  corrplot(mydata.coeff,method="number")
-})
-
-# ------------------------------------------------------SCATTERPLOT CORRELATION-------------------------------------------------------    
-
-output$corrscatt <- renderPlot({
-  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
-  mydata<-mydata2[,c(3:11)]
-  chart.Correlation(mydata, histogram=TRUE, pch=19)
-  
-})
-
-# -----------------------------------------------------------HEAT MAP-----------------------------------------------------------------    
-
-output$heatmap <- renderPlot({
-  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
-  mydata<-mydata2[,c(3:11)]
-  mydata.rcorr = rcorr(as.matrix(mydata))
-  mydata.coeff = mydata.rcorr$r
-  palette = colorRampPalette(c("green", "white", "red")) (20)
-  heatmap(x = mydata.coeff, col = palette, symm = TRUE)
-})
-
-
-# ----------------------------------------------------TABLES FOR POLLUTANT PRECAUTIONS-------------------------------------------------- 
-
-# reading csv file containing precautions from pollutants
-Poltab= read.csv("https://raw.githubusercontent.com/prathibha13/R-shiny-project-AQI/main/pollutants%20table.csv")
-
-# Table showing PM2.5 cautions
-pm2_5data<-Poltab[,c(1:3)]
-output$pm2_5 <- DT::renderDataTable(
-  DT::datatable({ 
-    pm2_5data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-# Table showing PM10 cautions
-pm10data<- Poltab[,c(4:6)]
-output$pm10 <- DT::renderDataTable(
-  DT::datatable({ 
-    pm10data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  ))
-
-# Table showing NO2 cautions
-no2data<-Poltab[,c(7:9)]
-output$no2 <- DT::renderDataTable(
-  DT::datatable({ 
-    no2data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
- 
-  ))
-
-# Table showing CO cautions
-codata<-Poltab[,c(10:12)]
-output$co <- DT::renderDataTable(
-  DT::datatable({ 
-    codata
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-# Table showing SO2 cautions
-so2data<-Poltab[,c(13:15)]
-output$so2 <- DT::renderDataTable(
-  DT::datatable({ 
-    so2data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-# Table showing O3 cautions
-o3data<-Poltab[,c(16:18)]
-output$o3 <- DT::renderDataTable(
-  DT::datatable({ 
-    o3data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-# Table showing NO cautions
-nodata<-Poltab[,c(19:21)]
-output$no <- DT::renderDataTable(
-  DT::datatable({ 
-    nodata
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-# Table showing NH3 cautions
-nh3data<-Poltab[,c(22:24)]
-output$nh3 <- DT::renderDataTable(
-  DT::datatable({ 
-    nh3data
-  }, 
-  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
-  ), rownames = FALSE 
-  
-  ))
-
-
-# ------------------------------------------------------TAB1--------------------------------------------------    
 output$AQI<-renderPlot({
   Day <- filter(Datafinal,Datafinal$Date == input$select_date)
   df_base <- ggplot(data=Day, aes(x=City, y=AQI, fill=AQI_Bucket))
@@ -483,8 +359,8 @@ output$O3<-renderPlot({
   df_base + geom_bar(stat = "identity") + scale_fill_brewer(palette = "Oranges")
 })
 
-# ----------------------------------------TAB3---------------------------------------------------------------------     
-# ----------------------------------------LINE GRAPHS------------------------------------------------------------- 
+# ------------------------------------------- TAB3 ---------------------------------------------------------------------     
+# ---------------------------------------- LINE GRAPHS ------------------------------------------------------------- 
 
 output$plots <- renderPlot({
   Datafinal$Date <- as.Date(Datafinal$Date)
@@ -515,6 +391,131 @@ output$plots <- renderPlot({
          text.col=c("blue","red","orange","purple","grey","green","brown","violet")
   )
 })
+
+# ----------------------------------------------------------- TAB4 -----------------------------------------------------------------------  
+# --------------------------------------------------------CORRELATION MATRIX ----------------------------------------------------------    
+
+output$corrcoeff <- renderPlot({
+  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
+  mydata<-mydata2[,c(3:11)]
+  mydata.rcorr = rcorr(as.matrix(mydata))
+  mydata.coeff = mydata.rcorr$r
+  corrplot(mydata.coeff,method="number")
+})
+
+# ------------------------------------------------------SCATTERPLOT CORRELATION-------------------------------------------------------    
+
+output$corrscatt <- renderPlot({
+  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
+  mydata<-mydata2[,c(3:11)]
+  chart.Correlation(mydata, histogram=TRUE, pch=19)
+  
+})
+
+# -----------------------------------------------------------HEAT MAP-----------------------------------------------------------------    
+
+output$heatmap <- renderPlot({
+  mydata2 <- Datafinal %>%filter(Year==input$years, City==input$Cities)
+  mydata<-mydata2[,c(3:11)]
+  mydata.rcorr = rcorr(as.matrix(mydata))
+  mydata.coeff = mydata.rcorr$r
+  palette = colorRampPalette(c("green", "white", "red")) (20)
+  heatmap(x = mydata.coeff, col = palette, symm = TRUE)
+})
+
+
+# ----------------------------------------------------TABLES FOR POLLUTANT PRECAUTIONS-------------------------------------------------- 
+
+# reading csv file containing precautions from pollutants
+Poltab= read.csv("https://raw.githubusercontent.com/prathibha13/R-shiny-project-AQI/main/pollutants%20table.csv")
+
+# Table showing PM2.5 cautions
+pm2_5data<-Poltab[,c(1:3)]
+output$pm2_5 <- DT::renderDataTable(
+  DT::datatable({ 
+    pm2_5data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing PM10 cautions
+pm10data<- Poltab[,c(4:6)]
+output$pm10 <- DT::renderDataTable(
+  DT::datatable({ 
+    pm10data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  ))
+
+# Table showing NO2 cautions
+no2data<-Poltab[,c(7:9)]
+output$no2 <- DT::renderDataTable(
+  DT::datatable({ 
+    no2data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing CO cautions
+codata<-Poltab[,c(10:12)]
+output$co <- DT::renderDataTable(
+  DT::datatable({ 
+    codata
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing SO2 cautions
+so2data<-Poltab[,c(13:15)]
+output$so2 <- DT::renderDataTable(
+  DT::datatable({ 
+    so2data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing O3 cautions
+o3data<-Poltab[,c(16:18)]
+output$o3 <- DT::renderDataTable(
+  DT::datatable({ 
+    o3data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing NO cautions
+nodata<-Poltab[,c(19:21)]
+output$no <- DT::renderDataTable(
+  DT::datatable({ 
+    nodata
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
+# Table showing NH3 cautions
+nh3data<-Poltab[,c(22:24)]
+output$nh3 <- DT::renderDataTable(
+  DT::datatable({ 
+    nh3data
+  }, 
+  options = list(searching = FALSE, pageLength = 10, lengthChange = FALSE, order = list(list(1, 'desc'))
+  ), rownames = FALSE 
+  
+  ))
+
 #------------------------------------------------------------TAB5------------------------------------------------------------
 #------------------------------------------------------------RAW DATA------------------------------------------------------------
 output$downloadData <- downloadHandler(
