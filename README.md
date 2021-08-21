@@ -39,3 +39,6 @@ understanding of their air quality by decoding the quality in terms of unitless 
 with each figure and colour representing a different category of associated health risk. By
 knowing which pollutant contributes more that specific pollutant can be reduced from usage. By
 knowing the highest polluted city that city can take measures to avoid the air pollution in future
+
+<h3><b>Web Application of the project :</b></h3>
+https://rishab-sarkar.shinyapps.io/AQI-India/
