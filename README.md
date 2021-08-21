@@ -13,16 +13,18 @@ years
 
 <h3><b>Work flow :</b></h3>
 
-- We decide to used R shiny to develop a dashboard to explain our findings and insights. the first tab was dedicated to the news and current affairs related to pollution and about the dashboard.
+- We have used R shiny to develop a dashboard to explain our findings and insights. T
+- The HOME tab introduces the topic and gives insight into the current affairs related to pollution .
+- The MAP DISTRIBUTION tab shows the India map with the states we are analyzing and the AQI for that state, the distribution of various pollutants using bar graph was also presented in the same page.
+- In the LINE GRAPH tab one can understand the trends/patterns of how pollutants change in different cities on a weekly basis.
+- The POLLUTANT TRENDS tab showsthe correlation between the various pollutants and how they affect the value of AQI using heat map and correlation matrices. This tab also provides some suggestions for the people in those cities to have a better life against pollution.
 
-- The second tab was dedicated to show the map with the states we are analyzing and the AQI for that state, the distribution of various pollutants were also presented in the same page.
 
-- The third tab was dedicated to the distribution of the pollutants based on the time line for a particular place.
-
-- the forth slide was the most important of them all. It had a heat-map showing the correlation between the various pollutants and how they affect us. we also had some suggestions for the people in those places to have a better life against pollution.
+<h3><b>Data Visualization tools used :</b></h3> 
+Leaflet, Corrplot, Hmisc, ggplot2, Performance Analytics
 
 <h3><b>Result :</b></h3>
-Through these graphs and statistical tools, we can see how AQI has changed over the course of
+Through the graphs and statistical tools seen in the dashboard, we can see how AQI has changed over the course of
 years and which pollutant is the most significant contributor to a given city. In nearly all the 8
 cities that we have analysed, the air quality is lower.The line graph illustrates how the data differs
 in various time frames. If we use a particular time frame, we will find the relation of the variation
