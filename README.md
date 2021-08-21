@@ -1,4 +1,4 @@
-# R-shiny-project-AQI
+# Air Quality Index in India - R shiny dashboard
 <h3><b>Title description :</b></h3>
 Clean air is the basic amenity when it comes to healthy living for mankind. Today, inadequate air
 quality is one of the key causes for a variety of acute health problems. To determine its effect on
@@ -13,7 +13,7 @@ years
 
 <h3><b>Dataset :</b></h3>
 
-- finalDS.csv is the dataset we have used in the project. It is a pre-processed dataset of a dataset taken from Kaggle.
+- finalDS.csv is the dataset we have used in the project. It is a pre-processed dataset of a dataset taken from Kaggle[link: https://www.kaggle.com/rohanrao/air-quality-data-in-india].
 - pollutants table.csv is a dataset we have created that is used in the pollutant trends tab
 
 <h3><b>Work flow :</b></h3>
