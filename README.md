@@ -14,7 +14,7 @@ the years.
 <h3><b>Dataset :</b></h3>
 
 - finalDS.csv is the dataset we have used in the project. It is a pre-processed dataset of a dataset taken from Kaggle[link: https://www.kaggle.com/rohanrao/air-quality-data-in-india].
-- pollutants table.csv is a dataset we have created that is used in the pollutant trends tab
+- pollutants table.csv is a dataset we have created that is used in the pollutant trends tab.
 
 <h3><b>Work flow :</b></h3>
 
@@ -40,10 +40,9 @@ and correlate it with the incidence that produced it.
 Air pollution is one of the biggest challenges that our country is facing right now. It’s all the more
 important in our country where the common man is not quite familiar with the technical
 terminologies and measuring units (like ppm /ppb / or µg/mg3). Hence the AQI simplifies the
-understanding of their air quality by decoding the quality in terms of unitless numbers and colour,
-with each figure and colour representing a different category of associated health risk. By
-knowing which pollutant contributes more that specific pollutant can be reduced from usage. By
-knowing the highest polluted city that city can take measures to avoid the air pollution in future
+understanding of their air quality by decoding the quality in terms of unitless numbers. By
+knowing which pollutant contributes more, that specific pollutant can be reduced from usage. By
+knowing the highest polluted city that city can take measures to avoid the air pollution in future.
 
 <h3><b>Web Application of the project :</b></h3>
 https://rishab-sarkar.shinyapps.io/AQI-India/
