@@ -9,7 +9,7 @@ our health, it is important to know the air quality of our locality, region, and
 The project aims at analysing Air Quality Data for various cities in India over a time
 period of 2017-2019. The project analyses the same data in multiple ways using different
 statistical tools and visualization tools to derive insights from the changing trends over
-years
+the years.
 
 <h3><b>Dataset :</b></h3>
 
